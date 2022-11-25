@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zabbix_export>
+    <version>6.0</version>
+    <date>2022-11-25T16:47:54Z</date>
+    <groups>
+        <group>
+            <uuid>4918b88734c54bd094cff7585b5d71fc</uuid>
+            <name>Templates/Network Devices</name>
+        </group>
+    </groups>
+    <templates>
+        <template>
+            <uuid>e2988011fb314ee78e73451719337504</uuid>
+            <template>Template Check RDP</template>
+            <name>Template Check RDP</name>
+            <groups>
+                <group>
+                    <name>Templates/Network Devices</name>
+                </group>
+            </groups>
+            <items>
+                <item>
+                    <uuid>8641d687c7bb45a9a0ea1de0b5b1f5af</uuid>
+                    <name>RDP Availability</name>
+                    <type>SIMPLE</type>
+                    <key>net.tcp.service[tcp,,3389]</key>
+                    <delay>30s</delay>
+                    <triggers>
+                        <trigger>
+                            <uuid>2c765da16f934ed898a5f3d8051a944e</uuid>
+                            <expression>last(/Template Check RDP/net.tcp.service[tcp,,3389],#3)=0</expression>
+                            <name>Unavailable by RDP ping</name>
+                            <priority>HIGH</priority>
+                        </trigger>
+                    </triggers>
+                </item>
+            </items>
+        </template>
+    </templates>
+</zabbix_export>
